@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital@1&display=swap');
+
+.flex-container{
+    display: flex;
+}
+
+.main {
+    min-height: 800px;
+    display: flex;
+    flex-flow: row;
+}
+
+header {
+    background-color: #F0EEEF;
+    color: black;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 40px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+article {
+    order: 2;
+    border: 1px solid black;
+    width: 80%;
+}
+
+nav {
+    order: 1;
+    border: 1px solid black;
+    width: 20%;
+}
+
+footer {
+    border: 1px solid black;
+}
+
+@media all and (max-with: 640px){
+    .main{
+        flex-flow: column;
+    }
+}
+
+.sub-title {
+    font-weight: bold;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.part {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+    text-align: center; 
+}
+
+.image-container {
+    margin: 4px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.images-row {
+    margin-top: 5px;
+}
+
+.biography {
+    margin-top: 50px;
+    padding: 10px;
+}
