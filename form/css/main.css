@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body {
+    background-color: cornflowerblue;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    font-size: 100px;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+.subtitle {
+    text-align: center;
+    color:black;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 32px;
+}
+
+.main {
+    background-color: whitesmoke;
+    margin-top: 100px;
+    margin-left: 350px;
+    margin-right: 350px;
+    margin-bottom: 200px;
+    min-height: 600px;
+    min-width: 200px;
+    border: 1px solid cadetblue;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+label {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 24px;
+}
+
+select {
+    min-height: 35px;
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 20px;
+    
+}
+
+.button {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 32px;
+}

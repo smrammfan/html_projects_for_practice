@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Form</title>
+        <link rel="stylesheet" href = "css/main.css">
+    </head>
+    <body>
+        <p class="title">Form  for feedback </p>
+        <div class = "main">
+           <p class = "subtitle"> Let us know how we can improve our site</p>
+           <form id = "mainForm">
+                <label for = "fname" >First Name: </label><input type="text" id = "fname" name = "fname"><br>
+                <label for = "lname" >Last Name: </label><input type="text" id = "lname" name = "lname"><br>
+                <label for = "email" >Email: </label><input type="email" id = "email" name = "email"><br>
+                <label for = "age" >Age: </label><input type= "number" min = "10" id = "age" name = "age"><br>
+                <label for = "role">Which option best describe your current role?</label>
+                <select name="role" id="role">
+                    <option value="schoolboy">Schoolboy</option>
+                    <option value="student" selected = "selected">Student</option>
+                    <option value="jobless">Jobless</option>
+                    <option value="worker">Worker</option>
+                </select><br>
+                <label >How likely si that you will recommend our site to your friends?</label><br>
+                <input type="radio" id="def" name="rec" value="Definitaly">
+                <label for="rec">Definitaly</label><br>
+                <input type="radio" id="may" name="rec" value="Maybe">
+                <label for="may">Maybe</label><br>
+                <input type="radio" id="notSure" name="rec" value="notSure">
+                <label for="notSure">Not sure</label><br><br>
+                <label for = "comment">Write all you want to say:</label>
+                <textarea name= "comment" form = "mainForm" cols="50" rows="5">Enter text here...</textarea><br><br>
+                <input type="submit" class = "button">
+            </form>
+        </div>
+    </body>
+</html>
