@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Buttons</title>
+</head>
+
+<body>
+    <div id = "div-1" style="min-height: 20px; background-color: aquamarine; display: flex; align-items: center; justify-content: center;">Div 1</div>
+    <button onclick="growFirstDiv()">Grow Div 1</button>
+    <button onclick="reduceFirstDiv()">Reduce Div 1</button>
+    <button onclick="setRandomColor()">Set random color Div 1</button>
+    <button onclick="setTitle()">Set title Div 1</button>
+    
+    <script>
+        function growFirstDiv(){
+            var height = parseInt(document.getElementById("div-1").style.minHeight, 10);
+            height += 20;
+            document.getElementById("div-1").style.minHeight = height + "px";
+        } 
+
+        function reduceFirstDiv(){
+            var height = parseInt(document.getElementById("div-1").style.minHeight, 10);
+            if(height == 20) return;
+            height -= 20;
+            document.getElementById("div-1").style.minHeight = height + "px";
+        }
+
+        function setRandomColor(){
+            var r = randomInt(0, 255);
+            var g = randomInt(0, 255);
+            var b = randomInt(0, 255);
+            document.getElementById("div-1").style.backgroundColor = "rgb(" + r + "," + g +"," + b + ")";
+        }
+
+        function randomInt(min, max) {
+	        return min + Math.floor((max - min) * Math.random());
+        }
+
+        function setTitle(){
+            var str = prompt("Write new title:");
+            document.getElementById("div-1").textContent = str;
+        }
+    </script>
+</body>
+
+</html>
