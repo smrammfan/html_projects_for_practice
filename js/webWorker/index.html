@@ -19,6 +19,7 @@
     <button onclick="startCounter()">Start</button>
     <button onclick="stopCounter(); showAllCounts()">Stop</button><br><br>
     <table id = "main-table"></table><br>
+    <button onclick="deleteLastCount(); showAllCounts()">Delete Last Element</button>
     <script>
         var worker, res;
         var listResult = [];
@@ -48,6 +49,10 @@
                 tableHtmlText += "<tr><td>" + listResult[i].name + "</td><td>" + listResult[i].res + "</td></tr>" 
             }
             document.getElementById("main-table").innerHTML = tableHtmlText;
+        }
+
+        function deleteLastCount(){
+            listResult.pop();
         }
        
 
