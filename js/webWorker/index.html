@@ -17,24 +17,16 @@
     </style>
     <p>Count numbers: <output id="result">0</output></p>
     <button onclick="startCounter()">Start</button>
-    <button onclick="stopCounter(); addResInTable()">stop</button><br><br>
-    <table id = "main-table">
-        <tr>
-            <th>Name</th>
-            <th>Score</th>
-        </tr>
-    </table>
-
+    <button onclick="stopCounter(); showAllCounts()">Stop</button><br><br>
+    <table id = "main-table"></table><br>
     <script>
-        var worker;
-        var res;
+        var worker, res;
+        var listResult = [];
         function startCounter(){
             if(typeof(Worker) !== "undefined"){
                 worker = new Worker("./js/worker.js");
                 worker.onmessage = function(event){
-                    res = event.data;
-                    document.getElementById("result").innerHTML = res;
-                    
+                    document.getElementById("result").innerHTML = event.data;
                 };
             }else {
                 document.getElementById("result").innerHTML = "download norm browser, please";
@@ -44,15 +36,20 @@
         function stopCounter(){
             worker.terminate();
             worker = undefined;
+            var name = prompt("Write the name of count:");
+            var res = document.getElementById("result").innerHTML;
             document.getElementById("result").innerHTML = "0";
+            listResult.push({name, res});
         }
 
-        function addResInTable(){
-            var tableHtml =  document.getElementById("main-table").innerHTML;
-            var name = prompt("Write the name of count:")
-            tableHtml += "<tr><td>" + name + "</td>" + "<td>" + res + "</td>" + "</tr>\n";
-            document.getElementById("main-table").innerHTML = tableHtml;
+        function showAllCounts(){
+            var tableHtmlText = "<tr><th>Name</th><th>Score</th></tr>";
+            for(i = 0; i < listResult.length; i++){
+                tableHtmlText += "<tr><td>" + listResult[i].name + "</td><td>" + listResult[i].res + "</td></tr>" 
+            }
+            document.getElementById("main-table").innerHTML = tableHtmlText;
         }
+       
 
     </script>
 </body>
