@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebWorker</title>
+</head>
+<body>
+    <style>
+        table {
+            border: 3px solid black;
+        }
+
+        tr, td, th {
+            border: 1px solid black;
+        }
+    </style>
+    <p>Count numbers: <output id="result">0</output></p>
+    <button onclick="startCounter()">Start</button>
+    <button onclick="stopCounter(); addResInTable()">stop</button><br><br>
+    <table id = "main-table">
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+    </table>
+
+    <script>
+        var worker;
+        var res;
+        function startCounter(){
+            if(typeof(Worker) !== "undefined"){
+                worker = new Worker("./js/worker.js");
+                worker.onmessage = function(event){
+                    res = event.data;
+                    document.getElementById("result").innerHTML = res;
+                    
+                };
+            }else {
+                document.getElementById("result").innerHTML = "download norm browser, please";
+            }
+        }
+
+        function stopCounter(){
+            worker.terminate();
+            worker = undefined;
+            document.getElementById("result").innerHTML = "0";
+        }
+
+        function addResInTable(){
+            var tableHtml =  document.getElementById("main-table").innerHTML;
+            var name = prompt("Write the name of count:")
+            tableHtml += "<tr><td>" + name + "</td>" + "<td>" + res + "</td>" + "</tr>\n";
+            document.getElementById("main-table").innerHTML = tableHtml;
+        }
+
+    </script>
+</body>
+</html>
