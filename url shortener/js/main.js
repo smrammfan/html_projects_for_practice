@@ -1,22 +1,21 @@
 var links = [];
 
-function getShortUrl(){
+function addShortUrl(){
     let id = (links.length == 0 ? 1: links[links.length - 1].id + 1);
     let link = document.getElementById("input_url").value;
-    let protocol_ok = link.startsWith("http://") || link.startsWith("https://") || link.startsWith("ftp://");
-    if(!protocol_ok){
-        link = "https://"+ link;
+    clearInputBox();
+   if(window.Worker){
+        var worker = new Worker("js/webWorker.js");
+        worker.postMessage({"href":window.location.href, "id":id, "link":link});
+        worker.onmessage = function(e){
+            links.push(e.data);
+            showAllLinks();
+            worker.terminate();
+            worker = undefined;
+        };
+    }else {
+        document.getElementById("main_table").innerHTML = "<tr><td>Use good browser, please</td></tr>";
     }
-    let newLink = getRandomUrl();
-    links.push({"id":id, "link":link, "newLink":newLink});
-}
-
-function getRandomUrl(){
-    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let newUrl = window.location.href;
-    for(let i = 0; i < 5; i++)
-        newUrl += possible.charAt(Math.floor(Math.random() * possible.length));
-    return newUrl;
 }
 
 function showAllLinks(){
